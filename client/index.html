@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chatbot - PDF Q&A</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 RAG Chatbot</h1>
+            <p>Upload a PDF and ask questions about its content</p>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section id="upload-section" class="upload-section">
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-icon">📄</div>
+                    <h3>Upload PDF Document</h3>
+                    <p>Drag and drop a PDF file here or click to browse</p>
+                    <input type="file" id="file-input" accept=".pdf" hidden>
+                    <button class="upload-btn" onclick="document.getElementById('file-input').click()">
+                        Choose File
+                    </button>
+                </div>
+                <div class="upload-progress" id="upload-progress" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <h3 id="progress-text">Processing PDF...</h3>
+                    <p id="progress-subtext">Please wait while we process your document</p>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    
+                    <div class="progress-stages">
+                        <div class="stage" id="stage-upload">
+                            <div class="stage-icon">📤</div>
+                            <div class="stage-text">Upload</div>
+                        </div>
+                        <div class="stage" id="stage-process">
+                            <div class="stage-icon">📖</div>
+                            <div class="stage-text">Process</div>
+                        </div>
+                        <div class="stage" id="stage-index">
+                            <div class="stage-icon">🔍</div>
+                            <div class="stage-text">Index</div>
+                        </div>
+                        <div class="stage" id="stage-complete">
+                            <div class="stage-icon">✅</div>
+                            <div class="stage-text">Complete</div>
+                        </div>
+                    </div>
+                    
+                    <div class="loading-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chat Section -->
+            <section id="chat-section" class="chat-section" style="display: none;">
+                <div class="chat-header">
+                    <h3>💬 Chat with your PDF</h3>
+                    <button class="new-doc-btn" onclick="resetChat()">Upload New Document</button>
+                </div>
+                
+                <div class="chat-messages" id="chat-messages">
+                    <div class="welcome-message">
+                        <p>👋 Hello! Ask me anything about the document you just uploaded.</p>
+                    </div>
+                </div>
+                
+                <div class="chat-input-container">
+                    <input type="text" id="chat-input" placeholder="Ask a question about your PDF..." disabled>
+                    <button id="send-btn" disabled onclick="sendMessage()">
+                        <span>Send</span>
+                        <span class="send-icon">→</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Powered by LangChain, Qdrant & Google Gemini</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

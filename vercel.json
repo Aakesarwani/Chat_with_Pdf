@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/app.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "client/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/backend/app.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/client/$1"
+    }
+  ],
+  "env": {
+    "GEMINI_API_KEY": "@gemini-api-key",
+    "QDRANT_URL": "@qdrant-url",
+    "QDRANT_API_KEY": "@qdrant-api-key"
+  },
+  "functions": {
+    "backend/app.py": {
+      "runtime": "python3.9"
+    }
+  },
+  "installCommand": "pip install -r requirements.txt",
+  "buildCommand": "echo 'Build complete'",
+  "outputDirectory": "client"
+}
