@@ -26,7 +26,7 @@
       "maxDuration": 30
     }
   },
-  "installCommand": "pip install -r requirements-fixed.txt",
+  "installCommand": "pip install -r requirements.txt",
   "buildCommand": "echo 'Build complete'",
   "outputDirectory": "client"
 }
