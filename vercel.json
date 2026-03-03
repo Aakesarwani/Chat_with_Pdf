@@ -22,10 +22,11 @@
   ],
   "functions": {
     "backend/app.py": {
-      "runtime": "python3.9"
+      "runtime": "python3.9",
+      "maxDuration": 30
     }
   },
-  "installCommand": "pip install -r requirements-clean.txt",
+  "installCommand": "pip install -r requirements-production.txt",
   "buildCommand": "echo 'Build complete'",
   "outputDirectory": "client"
 }
