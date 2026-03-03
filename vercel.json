@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/app_minimal.py",
+      "src": "backend/app.py",
       "use": "@vercel/python"
     },
     {
@@ -13,7 +13,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/app_minimal.py"
+      "dest": "/backend/app.py"
     },
     {
       "src": "/(.*)",
@@ -21,11 +21,11 @@
     }
   ],
   "functions": {
-    "backend/app_minimal.py": {
+    "backend/app.py": {
       "runtime": "python3.9"
     }
   },
-  "installCommand": "pip install -r requirements-minimal.txt",
+  "installCommand": "pip install -r requirements-clean.txt",
   "buildCommand": "echo 'Build complete'",
   "outputDirectory": "client"
 }
